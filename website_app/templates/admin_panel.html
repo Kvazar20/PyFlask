@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %} Admin panel {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_admin.css') }}"> {% endblock %}
+
+{% block content %}
+<section class="main">
+<div class="admin-panel">
+    <div class="home-btn-container">
+        <a href="{{ url_for('views.logout') }}">
+            <button class="home-btn">Leave</button>
+        </a>
+    </div>
+    <h1 class="admin-title">Welcome to Admin Panel</h1>
+
+    <form class="search" action="{{ url_for('views.search')}}" method="get">
+        <input type="text" name="search-input" placeholder="Enter a keyword" required>
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    {% if error_message == True %}
+    <div class="error-message">
+        <p>Can't delete any more tweets on this forum!</p>
+    </div>
+    {% endif %}
+
+    <div class="tweets-container">
+        <div class="python_tweets">
+            <div class="column-title">
+            <h2>Python Forum Tweets</h2>
+            </div>
+            {% for i in range(py_tweets | length) %}
+            <div class="tweet">
+                <div class="tweet-info">
+                    <p class="username">{{ py_tweets[i]['username'] }}</p>
+                    <p class="date">{{ py_tweets[i]['date'] }}</p>
+                </div>
+                <p class="tweet-text">{{ py_tweets[i]['tweet_text'] }}</p>
+                 <form action="{{ url_for('views.delete_tweet', forum='python', tweet_id=py_tweets[i]['id']) }}" method="get">
+                    <button class="delete-btn" type="submit">Delete</button>
+                 </form>
+            </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="flask_tweets">
+            <div class="column-title">
+            <h2>Flask Forum Tweets</h2>
+            </div>
+            {% for i in range(fl_tweets | length) %}
+            <div class="tweet">
+                <div class="tweet-info">
+                    <p class="username">{{ fl_tweets[i]['username'] }}</p>
+                    <p class="date">{{ fl_tweets[i]['date'] }}</p>
+                </div>
+                <p class="tweet-text">{{ fl_tweets[i]['tweet_text'] }}</p>
+                <form action="{{ url_for('views.delete_tweet', forum='flask', tweet_id=fl_tweets[i]['id']) }}" method="get">
+                    <button class="delete-btn" type="submit">Delete</button>
+                 </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if py_len > 3 or fl_len > 3 %}
+        {% if view_all == True %}
+        <a href="{{ url_for('views.admin_panel', view_all=False) }}">
+            <button class="view-all-btn">Hide</button>
+        </a>
+        {% else %}
+         <a href="{{ url_for('views.admin_panel', view_all=True) }}">
+            <button class="view-all-btn">View all</button>
+        </a>
+        {% endif %}
+    {% endif %}
+</div>
+</section>
+{% endblock %}

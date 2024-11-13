@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Admin panel {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_searched_tweets.css') }}"> {% endblock %}
+
+{% block content %}
+<section class="main">
+<div class="panel">
+    <div class="back-btn-container">
+        <a href="{{ url_for('views.admin_panel') }}">
+            <button class="back-btn">Back</button>
+        </a>
+    </div>
+    {% if error_message %}
+    <h2 class="error-message">Error! No tweets found</h2>
+    {% else %}
+    <h1 class="title">Found tweets</h1>
+    <div class="tweets">
+        {% for i in range(tweets|length) %}
+        <div class="tweet">
+            <div class="tweet-info">
+                <p class="username">{{ tweets[i]['username'] }}</p>
+                <p class="date">{{ tweets[i]['date'] }}</p>
+            </div>
+            <p class="tweet-text">{{ tweets[i]['tweet_text'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</section>
+{% endblock %}

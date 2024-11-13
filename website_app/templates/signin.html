@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Sign in {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_signin.css') }}"> {% endblock %}
+
+{% block content %}
+<div class="signin-container">
+    <form action="{{ url_for('views.signin') }}" method="post" class="signin-form">
+        <h2>Sign into Admin Panel</h2>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Sign In</button>
+    </form>
+
+    {% if error_message == True %}
+    <div class="error-message">
+        <h3>Wrong password!</h3>
+        <p>Enter the correct password or leave this page if you are not the admin.</p>
+    </div>
+    {% endif %}
+
+    <a href="{{ url_for('views.index') }}" class="home-btn">Return to Home</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} Not found {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_error.css') }}"> {% endblock %}
+
+{% block content %}
+<section class="main">
+<div class="panel">
+    <div class="back-btn-container">
+        <a href="{{ url_for('views.index') }}">
+            <button class="back-btn">Home</button>
+        </a>
+    </div>
+    <h2 class="error-message">Oops! Something went wrong.</h2>
+</div>
+</section>
+{% endblock %}

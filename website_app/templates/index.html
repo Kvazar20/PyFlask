@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Home page {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %}
+
+{% block content %}
+<header>
+    <nav class="navbar">
+        <ul>
+            <a href="{{ url_for('views.index') }}"><li>Home</li></a>
+            <a href="{{ url_for('views.python_index') }}"><li>Python</li></a>
+            <a href="{{ url_for('views.flask_index') }}"><li>Flask</li></a>
+            <a href="{{ url_for('views.learn_index') }}"><li>Learn</li></a>
+        </ul>
+        <a href="{{ url_for('views.signin') }}">
+            <button>Sign in</button>
+        </a>
+    </nav>
+</header>
+<section class="main">
+    <style>
+      .main {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("{{ url_for('static', filename='images/main.jpg') }}");
+        background-position: center center;
+        background-size: cover;
+      }
+    </style>
+    <div class="title">
+        <h1>Welcome to PyFlask!</h1>
+        <p>Here you can ask any questions about <span style="color:#00fffb; font-weight:bold;">Python</span> and <span style="color:rgb(18, 240, 166); font-weight:bold;">Flask</span></p>
+    </div>
+    <div class="pick-title"><h3>Pick a forum</h3></div>
+    <div class ="forums">
+        <div class="python-forum">
+            <img src="{{ url_for('static', filename='images/python_forum.jpeg') }}" alt="Python image (cool)"/>
+            <a href="{{ url_for('views.python_index') }}">
+                <div class="layer1">
+                    <h2>Python</h2>
+                </div>
+            </a>
+        </div>
+        <div class="flask-forum">
+            <img src="{{ url_for('static', filename='images/flask_forum.jpeg') }}" alt="Flask image (cool)"/>
+            <a href="{{ url_for('views.flask_index') }}">
+                <div class="layer2">
+                    <h2>Flask</h2>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

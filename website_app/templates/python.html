@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} Python forum {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_python.css') }}"> {% endblock %}
+
+{% block content %}
+<header>
+    <nav class="navbar">
+        <ul>
+            <a href="{{ url_for('views.index') }}"><li>Home</li></a>
+            <a href="{{ url_for('views.python_index') }}"><li>Python</li></a>
+            <a href="{{ url_for('views.flask_index') }}"><li>Flask</li></a>
+            <a href="{{ url_for('views.learn_index') }}"><li>Learn</li></a>
+        </ul>
+        <a href="{{ url_for('views.signin') }}">
+            <button>Sign in</button>
+        </a>
+    </nav>
+</header>
+<section class="main">
+    <style>
+    .main {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='images/python_background.jpg') }}");
+        background-size: cover;
+        background-position: center center;
+      }
+    </style>
+    <h1><span style="color:#00fffb; font-style:italic">Python</span> discussion forum</h1>
+    <div class = "tweetboard">
+        <div class="tweets-title">
+            <a href="{% if pg == 1 %}{{ url_for('views.python_index', page=total_pg) }}{% else %}{{ url_for('views.python_index', page=pg-1) }}{% endif %}">< Prev page</a>
+            <h2>Tweets (page {{ pg }}/{{ total_pg }})</h2>
+            <a href="{% if pg == total_pg %}{{ url_for('views.python_index', page=1) }}{% else %}{{ url_for('views.python_index', page=pg+1) }}{% endif %}">Next page ></a>
+        </div>
+        <hr>
+        <div class="write-tweet-title">
+            <p>Username</p>
+            <p>Tweet text</p>
+        </div>
+        <form class="write-tweet" action="{{ url_for('views.python_write_tweet', page_num=pg) }}" method="post">
+            <input class="username-input" type="text" name="username" maxlength="40">
+            <input class="tweet-input" type="text" name="tweet" maxlength="80">
+            <button type="submit">Write a tweet</button>
+        </form>
+        <hr>
+
+        <div class = "tweets">
+            {% for i in range(tweets | length) %}
+            <div class = "tweet">
+                <div class="tweet-info">
+                <p class="username">@{{ tweets[i]['username'] }}</p>
+                <p class="date">{{ tweets[i]['date'] }}</p>
+                </div>
+                <p class="tweet-text">{{ tweets[i]['tweet_text'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

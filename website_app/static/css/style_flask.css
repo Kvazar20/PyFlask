@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.navbar li, .navbar a, .navbar button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+.navbar {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px;
+    gap:20px;
+     background: linear-gradient(to right, rgb(55, 17, 92), rgb(33, 15, 115));
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+.navbar li {
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+.navbar li:hover, .navbar button, .tweets-title a, .write-tweet button{ /* All button colors */
+    background-color:rgb(101, 51, 209);
+}
+.navbar li a {
+    transition: all 0.3s ease 0s;
+    display: block;
+}
+.navbar button {
+    padding: 9px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.navbar button:hover, .tweets-title a:hover, .write-tweet button:hover {
+    background-color: #9515c4; /* All hover covers */
+}
+
+.main{
+    width:100%;
+    height:100vh;
+}
+.main h1{
+    padding: 41px 0px;
+    text-align: center;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    font-size:30px;
+
+}
+
+.tweetboard{
+    width:40%;
+    height:75vh;
+    margin:auto;
+    background: linear-gradient(to right, rgb(55, 17, 92), rgb(33, 15, 115));
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    border:rgb(11, 255, 190) solid 4px;
+}
+
+.tweets-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.tweets-title h2{
+    padding:20px 0px;
+    color:rgb(11, 255, 190);
+    font-family: "Montserrat", sans-serif;
+    font-size:30px;
+}
+.tweets-title a{
+    text-decoration:none;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    margin:0px 40px;
+    padding: 10px;
+    border-radius:10px;
+    transition: all 0.3s ease 0s;
+}
+.tweets-title a:hover {
+}
+
+.tweets{
+    margin:15px 30px;
+}
+.tweet{
+    background-color:rgb(255, 255, 255);
+    border:solid 1px;
+    border-radius: 10px;
+    border-color:rgba(0, 136, 169, 1);
+    margin:10px 0px;
+    padding: 10px 0px;
+}
+.tweet-info{
+    display:flex;
+    margin-bottom:7px;
+}
+.tweet p{
+    margin-left:10px;
+}
+.date{
+    color: rgb(101, 101, 101);
+}
+.username{
+    color:rgb(3, 37, 177);
+}
+
+.write-tweet-title{
+    display:flex;
+    color:white;
+    margin-left:55px;
+    gap:100px;
+    font-size:20px;
+    margin-top:20px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.write-tweet{
+    margin-left:6.5%;
+    margin-bottom:20px;
+}
+
+.write-tweet button{
+    padding:9px 15px;
+    border:none;
+    color:white;
+    font-family: "Montserrat", sans-serif;
+    border-radius:20px;
+    font-size:15px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.write-tweet button:hover{
+}
+.write-tweet input{
+    padding: 10px;
+    margin-right:10px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color:white;
+
+}
+.write-tweet input:focus {
+    outline: 1px solid white;
+}
+.tweet-input{
+    width:300px;
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Learn {% endblock %}
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='css/style_learn.css') }}"> {% endblock %}
+
+{% block content %}
+    <header>
+        <nav class="navbar">
+            <ul>
+                <a href="{{ url_for('views.index') }}"><li>Home</li></a>
+                <a href="{{ url_for('views.index') }}"><li>Python</li></a>
+                <a href="{{ url_for('views.flask_index') }}"><li>Flask</li></a>
+                <a href="{{ url_for('views.learn_index') }}"><li>Learn</li></a>
+            </ul>
+            <a href="{{ url_for('views.signin') }}">
+                <button>Sign in</button>
+            </a>
+        </nav>
+    </header>
+    <section class="main">
+        <style>
+          .main {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("{{ url_for('static', filename='images/main.jpg') }}");
+            background-position: center center;
+            background-size: cover;
+          }
+        </style>
+        <div class = "python-board">
+            <div class="python-image">
+                <img src="{{ url_for('static', filename='images/python_forum.jpeg') }}" alt="Python image (cool)"/>
+                <a href="{{ url_for('views.python_index') }}">
+                    <div class="layer1">
+                        <h2>Visit Forum</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="python-text">
+                <h1>Python</h1>
+                <p>Python is a simple, versatile programming language used in web development, data science, automation, and more. 
+                    Its readable syntax and strong library support make it ideal for both beginners and professionals.</p>
+            </div>
+        </div>
+        <div class = "flask-board">
+            <div class="flask-image">
+                <img src="{{ url_for('static', filename='images/flask_forum.jpeg') }}" alt="Flask image (cool)"/>
+                <a href="{{ url_for('views.flask_index') }}">
+                    <div class="layer2">
+                        <h2>Visit Forum</h2>
+                    </div>
+                </a>
+            </div>
+            <div class="flask-text">
+                <h1>Flask</h1>
+                <p>Flask is a lightweight Python web framework that is easy to use and highly flexible. 
+                    It offers essential tools to build web applications and can scale for larger projects with the help of extensions.</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
